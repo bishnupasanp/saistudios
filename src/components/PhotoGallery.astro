@@ -1,0 +1,10 @@
+---
+const photographs=[
+{id:'evening',image:'evening-portrait.webp',title:'An evening, together',alt:'A couple photographed beneath warm lights by Sai Studios'},
+{id:'portrait',image:'portrait.webp',title:'The quiet anticipation',alt:'A woman in traditional dress photographed outdoors by Sai Studios'},
+{id:'ritual',image:'wedding-ritual.webp',title:'The rituals we remember',alt:'Family members joining a couple during a wedding ritual'},
+{id:'blessing',image:'family-blessing.webp',title:'A family blessing',alt:'A family member blessing a bride and groom'}
+];
+---
+<section class="section photograph-section" id="photography"><div class="container"><div class="section-heading"><div><span class="eyebrow"><span class="tiny-line"></span> THE PHOTOGRAPHY COLLECTION</span><h2>A moment held.<br/> <em>A feeling kept.</em></h2></div><p>Original photographs from the<br/> Sai Studios collection.</p></div><div class="photograph-grid">{photographs.map(p=><button class="photograph-card" data-project={'photo-'+p.id} data-kind="photo" data-category="Photography collection" data-title={p.title} data-image={'/images/client/'+p.image} aria-label={'View photograph: '+p.title}><img src={'/images/client/'+p.image} alt={p.alt} loading="lazy" width="700" height="900"/><span>{p.title} <b>＋</b></span></button>)}</div></div></section>
+

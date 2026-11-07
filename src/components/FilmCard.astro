@@ -1,0 +1,29 @@
+---
+import type {Project} from '../data/portfolioData';import Icon from './Icon.astro';
+interface Props {project:Project}
+const {project:p}=Astro.props;
+---
+<button class="project" data-project={p.id} data-category={p.category} data-title={p.title} data-image={p.image||''} data-youtube={p.youtubeId||''} data-video={p.video||''} data-drive={p.driveUrl||''} data-preview={p.preview?'true':''} aria-label={'View '+p.title}>
+  <div class="project-image">
+    {p.image
+      ? <img class:list={[{'project-logo': p.logoCover}]} src={p.image} alt={p.alt} loading="lazy" width={p.logoCover ? 900 : 1280} height={p.logoCover ? 900 : 720}/>
+      : <div class="film-cover">
+          <img src="/images/client/logo.webp" alt="" width="80" height="80" loading="lazy"/>
+          <span class="eyebrow">SAI STUDIOS PRESENTS</span>
+          <span class="film-cover-title">{p.title}</span>
+        </div>}
+    <span class="project-format">{p.preview ? '45 SEC PREVIEW' : 'DRIVE MASTER'}</span>
+    <span class="play-circle"><Icon name={p.preview ? 'play' : 'diagonal'}/></span>
+  </div>
+  <div class="project-caption">
+    <div><span class="eyebrow">{p.category}</span><h3>{p.title}</h3></div>
+    <Icon name="diagonal"/>
+  </div>
+</button>
+
+<style>
+  .project-image > .project-logo {
+    object-fit: contain;
+    background: #202125;
+  }
+</style>

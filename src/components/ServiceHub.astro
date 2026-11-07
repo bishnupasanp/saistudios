@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import '../styles/service-hub.css';
+const services=[
+ {title:'Wedding films',note:'THE BIG DAY',image:'prashiddha-poster.webp',href:'/portfolio/?category=Weddings#work'},
+ {title:'Music videos',note:'SOUND & VISION',image:'udi-poster.webp',href:'/portfolio/?category=Music%20Videos%20%26%20Films#work'},
+ {title:'Wedding photography',note:'MOMENTS, HELD',image:'evening-portrait.webp',href:'/portfolio/#photography'},
+ {title:'Brand films',note:'IDEAS IN MOTION',image:'equipment.webp',href:'/production/'},
+ {title:'Pre-weddings',note:'YOUR FIRST CHAPTER',image:'himal-poster.webp',href:'/portfolio/?category=Engagements%20%26%20Pre-Wedding#work'},
+ {title:'The studio',note:'MAKE SOME SOUND',image:'recording-room.webp',href:'/podcast-studio/'}
+];
+---
+<section class="service-universe" aria-label="Explore Sai Studios services">
+ <div class="universe-heading"><span class="eyebrow">FILMS. FRAMES. FEELINGS.</span><p>Every story starts somewhere. <em>Choose yours.</em></p></div>
+ <div class="service-hub container">
+  <div class="hub-orbit orbit-one" aria-hidden="true"></div><div class="hub-orbit orbit-two" aria-hidden="true"></div>
+  <svg class="hub-connections" viewBox="0 0 1000 660" preserveAspectRatio="none" aria-hidden="true"><path d="M500 330 Q300 330 220 125 M500 330 Q700 330 780 125 M500 330 L120 330 M500 330 L880 330 M500 330 Q300 330 220 535 M500 330 Q700 330 780 535"/></svg>
+  <div class="hub-center"><span class="hub-center-ring" aria-hidden="true"></span><img src="/images/client/logo.webp" alt="" width="140" height="140" fetchpriority="high"/><h1>SAI STUDIOS</h1><span>NEPALGUNJ · NEPAL</span></div>
+  <nav class="hub-services" aria-label="Choose a creative service">
+   {services.map((service,i)=><a class={'service-bubble bubble-'+(i+1)} href={service.href} style={'--bubble-delay:-'+(i*1.2)+'s;--bubble-duration:'+(6+i%3)+'s'}><span class="bubble-surface"><img src={'/images/client/'+service.image} alt="" width="260" height="260"/><span class="bubble-label"><small>{service.note}</small><strong>{service.title}</strong><Icon name="diagonal"/></span></span></a>)}
+  </nav>
+ </div>
+ <div class="universe-foot"><span>EXPLORE A SERVICE <span aria-hidden="true">↗</span></span><button type="button" class="hub-motion-toggle" aria-pressed="false">Pause motion</button><a href="/contact/">Have something in mind? <span>Let’s talk ↗</span></a></div>
+</section>

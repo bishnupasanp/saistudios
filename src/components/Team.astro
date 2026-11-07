@@ -1,0 +1,4 @@
+---
+import {team} from '../data/teamData';const {excludeFounder=false}=Astro.props;const list=excludeFounder?team.slice(1):team;
+---
+<section class="section team-section"><div class="container"><div class="section-heading"><div><span class="eyebrow">THE CREW</span><h2>Different eyes.<br/> <em>One shared care.</em></h2></div><p>The people behind your photographs and films.</p></div><div class:list={['team-grid',{'three-up':list.length===3,'two-up':list.length===2}]}>{list.map(t=><article class="team-card"><div class="team-portrait"><img src={t.image} alt={t.name} width="700" height="900" loading="lazy"/></div><h3>{t.name}</h3>{t.alias&&<span class="team-alias">{t.alias}</span>}<p>{t.role}</p></article>)}</div></div></section>

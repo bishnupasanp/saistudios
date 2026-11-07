@@ -1,0 +1,9 @@
+---
+import Layout from '../layouts/Layout.astro';import PageHero from '../components/PageHero.astro';import Pricing from '../components/Pricing.astro';import {faqs} from '../data/siteConfig';
+---
+<Layout title="Wedding Films & Photography" description="Explore Sai Studios wedding photography, cinematic films and official package prices for Nepalgunj and Western Nepal." service="Wedding">
+<PageHero label="WEDDINGS & PRE-WEDDINGS" title="Your day." accent="All the feeling." text="Photography and films for the people, rituals and small moments that make your wedding yours." image="/images/client/wedding-ceremony.webp" imageAlt="A quiet moment during a wedding ceremony photographed by Sai Studios" cta="Explore the packages" href="#pricing"/>
+<section class="coverage-strip"><div class="container"><span>PHOTOGRAPHY</span><span>WEDDING FILMS</span><span>PRE & POST-WEDDING SHOOTS</span></div></section>
+<Pricing/>
+<section class="section faq-section"><div class="container faq-layout"><div><span class="eyebrow">BEFORE YOU BOOK</span><h2>A couple of<br/> <em>useful details.</em></h2></div><div>{[faqs[1],faqs[2]].map(f=><details><summary>{f.q}<span>＋</span></summary><p>{f.a}</p></details>)}</div></div></section>
+</Layout>

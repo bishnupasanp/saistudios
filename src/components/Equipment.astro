@@ -1,0 +1,4 @@
+---
+import {equipment} from '../data/equipmentData';
+---
+<section class="section kit-section"><div class="container kit-layout"><div><span class="eyebrow">PRODUCTION CAPABILITIES</span><h2>Good tools.<br/> <em>A considered eye.</em></h2><p>6K capture, dedicated lighting and sound, and a Mac Studio edit suite.</p></div><div class="kit-list">{equipment.map(e=><details><summary><span>{e.title}</span><span>＋</span></summary><ul>{e.items.map(item=><li>{item}</li>)}</ul></details>)}</div></div></section>

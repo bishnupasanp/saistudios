@@ -1,0 +1,5 @@
+---
+import {projects,categories} from '../data/portfolioData';import FilmCard from './FilmCard.astro';import Icon from './Icon.astro';
+const {full=false}=Astro.props;const selected=full?projects:[projects[4],projects[1],projects[5]];
+---
+<section class="section work-section" id="work"><div class="container">{!full&&<div class="section-heading"><div><span class="eyebrow">SELECTED STORIES / 01—03</span><h2>A little of <em>what we do.</em></h2></div><a class="text-link" href="/portfolio/">View all work <Icon name="diagonal"/></a></div>}{full&&<div class="filters" role="group" aria-label="Filter portfolio">{categories.map((c,i)=><button data-filter={c} aria-pressed={i===0} class={i===0?'active':''}>{c}</button>)}</div>}<div class:list={['portfolio-grid',{'featured-grid':!full}]}>{selected.map(p=><FilmCard project={p}/>)}</div>{full&&<p class="media-note">Selected films include 45-second previews. Full films open in Google Drive and may require sign-in or access.</p>}</div></section>

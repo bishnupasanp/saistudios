@@ -1,0 +1,69 @@
+
+/* Motion is progressive: all content remains visible if JavaScript is unavailable. */
+html{scroll-padding-top:115px}
+.page-hero-copy>.eyebrow,.founder-layout>div:last-child>.eyebrow{animation:opening-rise .7s .05s both}
+.page-hero-copy>h1,.founder-layout h1,.contact-heading h1{animation:opening-rise .85s .12s both}
+.page-hero-copy>p,.contact-heading p{animation:opening-rise .8s .22s both}
+.page-hero-media,.founder-image{animation:opening-image 1s .12s both}
+.booking-form input:focus,.booking-form select:focus,.booking-form textarea:focus{border-color:#59c99f}
+.header nav.open{animation:opening-rise .22s both}
+.faq-layout details[open]>p,.kit-list details[open]>ul,.additional-rates[open]>.rate-list{animation:opening-rise .25s both}
+.header{position:sticky;top:0;background:#09192bea;backdrop-filter:blur(18px);transition:box-shadow .3s,border-color .3s}
+.header.is-scrolled{border-bottom-color:#4b796953;box-shadow:0 10px 35px #020d1b35}
+.menu-toggle span{transition:transform .25s,opacity .25s}
+.menu-toggle[aria-expanded="true"] span:first-child{transform:translateY(3.5px) rotate(45deg)}
+.menu-toggle[aria-expanded="true"] span:last-child{transform:translateY(-3.5px) rotate(-45deg)}
+.btn{position:relative;overflow:hidden;isolation:isolate;transition:background .25s,transform .25s,box-shadow .25s}
+.btn:before{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 25%,#ffffff26 50%,transparent 75%);transform:translateX(-130%);transition:transform .65s}
+.btn:hover:before{transform:translateX(130%)}.btn:hover{box-shadow:0 8px 28px #087f782b}
+.btn svg,.text-link svg,.project-caption>svg{transition:transform .3s cubic-bezier(.2,.7,.2,1)}
+.btn:hover svg,.text-link:hover svg,.project:hover .project-caption>svg{transform:translate(3px,-3px)}
+.home-hero{position:relative;isolation:isolate}
+.home-hero:before{content:'';position:absolute;width:65%;height:85%;left:-25%;top:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse,#12645a1f,transparent 65%)}
+.home-hero-copy>.eyebrow{animation:opening-rise .7s .06s both}
+.home-hero-copy>h1{animation:opening-rise .95s .15s both}
+.home-hero-copy>p{animation:opening-rise .85s .3s both}
+.home-hero-copy .hero-actions{animation:opening-rise .8s .43s both}
+.home-hero-art{animation:opening-image 1.15s .15s both}
+.home-hero-art>img{animation:gentle-settle 7s .2s both;transform-origin:50% 40%}
+.hero-image-frame{position:absolute;inset:13px -13px -13px 13px;border:1px solid #bfad7045;z-index:-1;pointer-events:none}
+.hero-detail{position:absolute;left:-45px;bottom:48px;width:142px;height:180px;z-index:3;border:7px solid #09192b;box-shadow:0 10px 35px #020c1c66;overflow:hidden;animation:opening-rise 1s .7s both}
+.hero-detail>img{width:100%;height:100%;object-fit:cover;transition:transform .7s}
+.hero-detail:hover>img{transform:scale(1.06)}
+.home-hero-art .photo-caption{left:auto;right:25px;text-align:right}
+.service-grid>a{transition:background .3s}
+.service-grid>a:hover{background:#163b3b35}
+.service-grid>a:hover h2{color:#6cd8b6}
+.service-grid h2{transition:color .25s}
+.project-image{transition:box-shadow .35s}
+.project-image>img{transition:transform .75s cubic-bezier(.2,.7,.2,1),filter .6s}
+.project:hover .project-image>img{transform:scale(1.055);filter:saturate(1.08)}
+.play-circle{transition:background .25s,transform .3s,border-color .3s}
+.project:hover .play-circle{background:#2baf88;color:#082824;border-color:#2baf88;transform:scale(1.08)}
+.project-caption h3{transition:color .25s}.project:hover .project-caption h3{color:#79d9ba}
+.project.filter-enter{animation:filter-arrival .35s both}
+.price-card{transition:transform .3s,box-shadow .3s,border-color .3s}
+.price-card:hover{transform:translateY(-5px);box-shadow:0 14px 35px #0f353415;border-color:#648a76}
+.price-card.featured:hover{border-color:#bba66b}
+.team-portrait>img,.photograph-card>img,.studio-photo-row>img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.team-portrait{overflow:hidden}.team-card:hover .team-portrait>img{transform:scale(1.025)}
+.photograph-card{overflow:hidden}.photograph-card:hover>img{transform:scale(1.025)}
+.kit-list summary>span:last-child,.additional-rates summary>span:last-child{transition:transform .25s}
+.kit-list details[open] summary>span:last-child,.additional-rates[open] summary>span:last-child{transform:rotate(45deg)}
+.lightbox[open]{animation:dialog-arrival .25s both}
+.lightbox[open]::backdrop{animation:backdrop-arrival .2s both}
+#lightbox-media>video,#lightbox-media>img{animation:media-arrival .3s both}
+.motion-ready .reveal{opacity:0;transform:translateY(25px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);transition-delay:var(--reveal-delay,0ms)}
+.motion-ready .reveal.is-visible{opacity:1;transform:translateY(0)}
+.motion-ready .reveal-delay-1{--reveal-delay:80ms}.motion-ready .reveal-delay-2{--reveal-delay:160ms}.motion-ready .reveal-delay-3{--reveal-delay:240ms}
+@keyframes opening-rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes opening-image{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes gentle-settle{from{transform:scale(1.06)}to{transform:scale(1)}}
+@keyframes filter-arrival{from{opacity:.2;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
+@keyframes dialog-arrival{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+@keyframes backdrop-arrival{from{opacity:0}to{opacity:1}}
+@keyframes media-arrival{from{opacity:.25}to{opacity:1}}
+@media(max-width:800px){.hero-detail{width:110px;height:142px;left:-24px;bottom:50px;border-width:5px}.home-hero-art .photo-caption>span:last-child{font-size:22px}}
+@media(max-width:560px){html{scroll-padding-top:98px}.hero-detail{display:none}.hero-image-frame{display:none}.home-hero-art .photo-caption{left:20px;right:auto;text-align:left}.home-hero-art .photo-caption>span:last-child{font-size:28px}.header{backdrop-filter:blur(12px)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.motion-ready .reveal{opacity:1!important;transform:none!important}.home-hero-art>img{transform:none!important}}
+
