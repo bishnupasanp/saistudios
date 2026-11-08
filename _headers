@@ -1,0 +1,14 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-i7dSDCcTYfdwWQDE45MRJOb8wCZsOk/vi/5rhkjcT+Q=' 'sha256-yqNh4KS9B7YE5xHAPJ7WnpqtVuBOOc8c4k7QKD583y8='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; media-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+/images/*
+  Cache-Control: public, max-age=86400, must-revalidate
+/videos/*
+  Cache-Control: public, max-age=86400, must-revalidate
+

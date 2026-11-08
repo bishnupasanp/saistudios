@@ -1,0 +1,20 @@
+Options -Indexes
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^(www\.)?saistudiosnepal\.com$ [NC]
+RewriteCond %{HTTPS} !=on [OR]
+RewriteCond %{HTTP_HOST} ^www\. [NC]
+RewriteRule ^ https://saistudiosnepal.com%{REQUEST_URI} [R=301,L,NE]
+</IfModule>
+<IfModule mod_headers.c>
+Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'sha256-i7dSDCcTYfdwWQDE45MRJOb8wCZsOk/vi/5rhkjcT+Q=' 'sha256-yqNh4KS9B7YE5xHAPJ7WnpqtVuBOOc8c4k7QKD583y8='; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://images.unsplash.com; media-src 'self'; frame-src https://www.youtube.com https://www.youtube-nocookie.com https://youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; upgrade-insecure-requests"
+Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+Header always set X-Frame-Options "DENY"
+Header always set X-Content-Type-Options "nosniff"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
+Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+<FilesMatch "\.(?:html|webp|avif|mp4|webm)$">
+Header set Cache-Control "public, max-age=86400, must-revalidate"
+</FilesMatch>
+</IfModule>
+
