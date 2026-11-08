@@ -1,10 +1,180 @@
 ---
-import Layout from '../layouts/Layout.astro';import Portfolio from '../components/Portfolio.astro';import Icon from '../components/Icon.astro';import ServiceHub from '../components/ServiceHub.astro';
-const services=[{n:'01',title:'Weddings',text:'The rituals, the laughter, and everything in between.',href:'/weddings/',label:'Photography & wedding films'},{n:'02',title:'Production',text:'Considered films for brands, artists and real stories.',href:'/production/',label:'Commercials · Documentaries · Music'},{n:'03',title:'The studio',text:'A space for conversations, performances and new ideas.',href:'/podcast-studio/',label:'Podcast & recording sessions'}];
+import Layout from '../layouts/Layout.astro';
+import Portfolio from '../components/Portfolio.astro';
+import Icon from '../components/Icon.astro';
+import ServiceHub from '../components/ServiceHub.astro';
+
+const services = [
+  { title: 'Weddings', label: 'Photography & wedding films', description: 'The rituals, the laughter, and everything in between.', image: 'wedding-ceremony.webp', width: 1100, height: 1650, href: '/weddings/', action: 'Explore weddings' },
+  { title: 'Production', label: 'Commercials, documentaries & music', description: 'Films for brands, artists and stories worth telling.', image: 'aama-poster.webp', width: 1280, height: 720, href: '/production/', action: 'Explore production' },
+  { title: 'The studio', label: 'Podcast & recording sessions', description: 'A space for conversations, performances and new ideas.', image: 'recording-room.webp', width: 1500, height: 844, href: '/podcast-studio/', action: 'Explore the studio' },
+];
 ---
+
 <Layout>
-<ServiceHub/>
-<section class="service-section"><div class="container service-grid">{services.map(s=><a href={s.href}><span class="service-no">{s.n}</span><div><span class="eyebrow">{s.label}</span><h2>{s.title}</h2><p>{s.text}</p></div><Icon name="diagonal"/></a>)}</div></section>
-<Portfolio/>
-<section class="paper-section home-story"><div class="container"><span class="eyebrow">A STUDIO WITH ROOTS</span><div class="home-story-grid"><h2>From Nepalgunj.<br/> <em>With a little more heart.</em></h2><div><p>Led by director and cinematographer Shailendra Gautam “Nirmohi”, we make photographs and films that stay close to the people in them.</p><a class="text-link" href="/about/">Meet Sai Studios <Icon name="diagonal"/></a></div></div></div></section>
+  <ServiceHub/>
+
+  <section class="section home-services" aria-labelledby="home-services-title">
+    <div class="container">
+      <div class="section-heading">
+        <div>
+          <span class="eyebrow">WORK WITH SAI STUDIOS</span>
+          <h2 id="home-services-title">What are we <em>making?</em></h2>
+        </div>
+        <p>Choose a service to see our work, find out what’s included, and plan your next step.</p>
+      </div>
+      <div class="home-service-grid">
+        {services.map((service, index) => (
+          <a class="home-service-card" href={service.href}>
+            <img src={'/images/client/' + service.image} width={service.width} height={service.height} alt="" loading="lazy" decoding="async"/>
+            <span class="service-frame" aria-hidden="true">{'0' + (index + 1)} / 03</span>
+            <div class="service-card-copy">
+              <span class="eyebrow">{service.label}</span>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <span class="service-card-action">{service.action} <Icon name="diagonal"/></span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <div class="home-film-reel"><Portfolio/></div>
+
+  <section class="paper-section home-story">
+    <div class="container home-story-grid">
+      <figure class="home-founder">
+        <img src="/images/client/shailendra.webp" alt="Shailendra Gautam holding a cinema camera" width="700" height="700" loading="lazy" decoding="async"/>
+        <figcaption>Shailendra Gautam · Director & cinematographer</figcaption>
+      </figure>
+      <div>
+        <span class="eyebrow">A STUDIO WITH ROOTS</span>
+        <h2>From Nepalgunj.<br/> <em>With a little more heart.</em></h2>
+        <p>Led by director and cinematographer Shailendra Gautam “Nirmohi”, we make photographs and films that stay close to the people in them.</p>
+        <a class="text-link" href="/about/">Meet Sai Studios <Icon name="diagonal"/></a>
+      </div>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .home-services {
+    background: linear-gradient(180deg, #102334, #0a1a2a);
+    border-top: 1px solid #b89a5d30;
+  }
+
+  .home-service-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(12px, 2vw, 24px);
+  }
+
+  .home-service-card {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    min-height: clamp(290px, 32vw, 390px);
+    padding: clamp(16px, 2.2vw, 30px);
+    border: 1px solid #f0d59e38;
+    border-radius: 8px;
+    background: #091725;
+    color: #fff;
+  }
+
+  .home-service-card > img,
+  .home-service-card::after {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+  .home-service-card > img {
+    object-fit: cover;
+    object-position: 50% 34%;
+    transition: transform .55s ease;
+  }
+
+  .home-service-card:nth-child(2) > img { object-position: 12% 36%; }
+  .home-service-card:last-child > img { object-position: 53% 50%; }
+
+  .home-service-card::after {
+    content: '';
+    background: linear-gradient(180deg, #070f1a30, transparent 23%, #071321e8 68%, #071321 100%);
+  }
+
+  .service-frame {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    padding: 5px 9px;
+    border: 1px solid #f1ddaf60;
+    border-radius: 2px;
+    background: #08121cde;
+    color: #f1ddaf;
+    font: 9px var(--font-mono);
+    letter-spacing: .12em;
+  }
+
+  .service-card-copy .eyebrow { color: #f1ddaf; }
+  .service-card-copy h3 { margin: 6px 0; font-size: clamp(30px, 4vw, 50px); }
+  .service-card-copy p { color: #dae4e8; font-size: 12px; }
+  .service-card-action {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-top: 16px;
+    color: #c0f6e2;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .service-card-action svg { width: 16px; height: 16px; }
+
+  .home-service-card:is(:hover, :focus-visible) { border-color: #f1ddaf; }
+  .home-service-card:is(:hover, :focus-visible) > img { transform: scale(1.045); }
+
+  .home-film-reel {
+    position: relative;
+    background: radial-gradient(ellipse at 50% 0, #17383d55, transparent 70%);
+  }
+  .home-film-reel::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto;
+    height: 5px;
+    background: repeating-linear-gradient(90deg, #9ebcaf32 0 8px, transparent 8px 18px);
+    pointer-events: none;
+  }
+
+  .home-story-grid {
+    grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr);
+    gap: clamp(24px, 7vw, 92px);
+    margin-top: 0;
+  }
+  .home-story-grid h2 { margin: 12px 0; }
+  .home-founder {
+    margin: 0;
+    padding: 8px;
+    background: #f8f5ec;
+    border: 1px solid #18344926;
+    box-shadow: 0 12px 30px #101d2c18;
+  }
+  .home-founder img { display: block; width: 100%; height: auto; aspect-ratio: 5 / 4; object-fit: cover; object-position: 50% 25%; }
+  .home-founder figcaption { color: #405963; padding: 9px 5px 4px; font-size: 11px; }
+
+  @media (max-width: 680px) {
+    .home-service-grid, .home-story-grid { grid-template-columns: 1fr; }
+    .home-service-card { min-height: 280px; }
+    .home-story-grid > div { grid-row: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .home-service-card > img { transition: none; }
+    .home-service-card:is(:hover, :focus-visible) > img { transform: none; }
+  }
+</style>

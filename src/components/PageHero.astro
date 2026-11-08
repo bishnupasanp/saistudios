@@ -24,12 +24,36 @@ const {label,title,accent,text,image,imageAlt='From the Sai Studios collection',
     </div>
     {image && <div class="page-hero-media">
       <img src={image} alt={imageAlt} width="1000" height="1100" fetchpriority="high"/>
+      <span class="hero-viewfinder" aria-hidden="true"></span>
       <span class="image-caption">THROUGH THE SAI STUDIOS LENS</span>
     </div>}
   </div>
 </section>
 
 <style>
+  .page-hero-media { overflow: hidden; border: 1px solid #e6cf9c50; border-radius: 6px; }
+  .hero-viewfinder {
+    position: absolute;
+    z-index: 1;
+    inset: 11px;
+    border: 1px solid #f0d6a26b;
+    pointer-events: none;
+  }
+  .hero-viewfinder::before, .hero-viewfinder::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: solid #fae3b2;
+  }
+  .hero-viewfinder::before { inset: -1px auto auto -1px; border-width: 2px 0 0 2px; }
+  .hero-viewfinder::after { inset: auto -1px -1px auto; border-width: 0 2px 2px 0; }
+  .image-caption {
+    padding: 5px 8px;
+    color: #ffedc7;
+    background: #091725e8;
+  }
+
   .page-hero-logo {
     width: clamp(104px, 12vw, 140px);
     height: auto;
