@@ -25,7 +25,6 @@ const services = [
     <a
       class:list={['service-bubble', 'bubble-' + (index + 1), service.className]}
       href={service.href}
-      style={'--bubble-delay:-' + (index * 1.2) + 's;--bubble-duration:' + (6 + index % 3) + 's'}
     >
       <span class="bubble-surface">
         <img src={'/images/client/' + service.image} alt="" width="260" height="260"/>
@@ -50,6 +49,13 @@ const services = [
 </section>
 
 <style>
+  .bubble-1 { --bubble-delay: 0s; --bubble-duration: 6s; }
+  .bubble-2 { --bubble-delay: -1.2s; --bubble-duration: 7s; }
+  .bubble-3 { --bubble-delay: -2.4s; --bubble-duration: 8s; }
+  .bubble-4 { --bubble-delay: -3.6s; --bubble-duration: 6s; }
+  .bubble-5 { --bubble-delay: -4.8s; --bubble-duration: 7s; }
+  .bubble-6 { --bubble-delay: -6s; --bubble-duration: 8s; }
+
   .service-universe {
     isolation: isolate;
     background:
