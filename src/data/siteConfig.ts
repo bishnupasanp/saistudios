@@ -1,3 +1,5 @@
+import { money, royalWedding } from './pricingData';
+
 export const siteConfig = {
  name:'Sai Studios', tagline:'Stories that stay.', site:'https://saistudiosnepal.com',
  phone:'+977 9848036062', whatsapp:'https://wa.me/9779848036062',
@@ -11,7 +13,7 @@ export const siteConfig = {
 export const wa = (message:string) => siteConfig.whatsapp+'?text='+encodeURIComponent(message);
 export const faqs = [
  {q:'Where does Sai Studios work?',a:'Based in Nepalgunj and Kohalpur, we serve Gulariya, Bardiya, Surkhet, Dang Valley, Dhangadhi and Mahendranagar. Ask us about travel arrangements for your location.'},
- {q:'What does the Royal Wedding Package include?',a:'NPR 1,50,000 covers bride and groom over two days in the same town or city, with photography, video, a cinematic film and a pre- or post-wedding shoot.'},
+ {q:'What does the Royal Wedding Package include?',a:`NPR ${money(royalWedding.price)} covers both sides for two days of Haldi, Mehendi and wedding events in the same town or city. It includes photography, video, a cinematic film and a pre- or post-wedding shoot. Coverage across different towns or cities costs extra.`},
  {q:'How do I confirm a booking?',a:'Share your date, location and preferred service on WhatsApp. Our team will confirm availability, deliverables, travel requirements and booking terms directly.'},
  {q:'Can I book the podcast and shooting studio?',a:'Yes. Enquire about multi-camera 4K recording, RGB lighting and Hollyland wireless audio. Studio pricing is quoted for your session.'}
 ];

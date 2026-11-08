@@ -1,4 +1,47 @@
 ---
-import {packages,money} from '../data/pricingData';import {wa} from '../data/siteConfig';import Icon from './Icon.astro';
+import { additionalRates, money, packages } from '../data/pricingData';
+import { wa } from '../data/siteConfig';
+import Icon from './Icon.astro';
 ---
-<section class="section pricing-section paper-section" id="pricing"><div class="container"><div class="section-heading"><div><span class="eyebrow">WEDDING COVERAGE</span><h2>The right fit for<br/> <em>your celebration.</em></h2></div><p>Official package rates.<br/> Same town / city coverage.</p></div><div class="pricing-grid">{packages.slice(0,4).map(p=><article class:list={['price-card',{featured:p.featured}]}><div class="price-top"><span class="eyebrow">{p.label}</span>{p.featured&&<span class="package-badge">BOTH FAMILIES</span>}</div><h3>{p.name}</h3><div class="price"><span>NPR</span> {money(p.price)}</div><ul>{p.features.map(f=><li><Icon name="check"/>{f}</li>)}</ul><a class="text-link" href={wa('Namaste Sai Studios! I’m interested in '+p.name+' — NPR '+money(p.price)+'. Please confirm availability and details.')} target="_blank" rel="noopener noreferrer">Enquire about this package <Icon name="diagonal"/></a></article>)}</div><details class="additional-rates"><summary><span>Films, pre-wedding shoots & smaller celebrations</span><span>＋</span></summary><div class="rate-list">{packages.slice(4).map(p=><div><h3>{p.name}</h3><div>{p.features.map(f=><p>{f}</p>)}</div><a href={wa('Namaste! I’d like details about '+p.name+'.')} target="_blank" rel="noopener noreferrer" aria-label={'Enquire about '+p.name}>Enquire ↗</a></div>)}</div></details><p class="media-note">Travel between different towns or cities is quoted separately. Availability and final deliverables are confirmed by our team.</p></div></section>
+
+<section class="section pricing-section paper-section" id="pricing">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow">WEDDING COVERAGE</span>
+        <h2>The right fit for<br/> <em>your celebration.</em></h2>
+      </div>
+      <p>Wedding package rates apply within the same town or city. Coverage across towns or cities costs extra and is quoted for your locations.</p>
+    </div>
+
+    <div class="pricing-grid">
+      {packages.map(wedding => (
+        <article class:list={['price-card', { featured: wedding.featured }]}>
+          <div class="price-top">
+            <span class="eyebrow">{wedding.label}</span>
+            {wedding.featured && <span class="package-badge">BOTH FAMILIES</span>}
+          </div>
+          <h3>{wedding.name}</h3>
+          <div class="price"><span>NPR</span> {money(wedding.price)}</div>
+          <ul>{wedding.features.map(feature => <li><Icon name="check"/>{feature}</li>)}</ul>
+          <a class="text-link" href={wa(`Namaste Sai Studios! I’m interested in ${wedding.name} at NPR ${money(wedding.price)} for same-town or same-city coverage. Please confirm availability and details.`)} target="_blank" rel="noopener noreferrer">
+            Enquire about this package <Icon name="diagonal"/>
+          </a>
+        </article>
+      ))}
+    </div>
+
+    <details class="additional-rates">
+      <summary><span>Cinematic video, photoshoots, Pasni & birthdays</span><span>＋</span></summary>
+      <div class="rate-list">
+        {additionalRates.flatMap(({ titles, note, rates }) => titles.map(title => (
+          <div>
+            <div><h3>{title}</h3>{note && <p>{note}</p>}</div>
+            <div>{rates.map(rate => <p>{rate.coverage}: NPR {money(rate.price)}</p>)}</div>
+            <a href={wa(`Namaste Sai Studios! I’d like details about ${title}. Please confirm availability and rates.`)} target="_blank" rel="noopener noreferrer" aria-label={'Enquire about ' + title}>Enquire ↗</a>
+          </div>
+        )))}
+      </div>
+    </details>
+  </div>
+</section>
