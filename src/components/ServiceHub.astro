@@ -8,7 +8,7 @@ const services = [
  {title:'Wedding photography', note:'MOMENTS, HELD', image:'evening-portrait.webp', href:'/portfolio/#photography'},
  {title:'Brand films', note:'IDEAS IN MOTION', image:'equipment.webp', href:'/production/'},
  {title:'Wedding films', note:'THE BIG DAY', image:'prashiddha-poster.webp', href:'/portfolio/?category=Weddings#work'},
- {title:'Sai Studios Podcast', image:'sai-studios-podcast-logo.webp', href:'https://www.youtube.com/@SaiStudiospodcast', className:'podcast-bubble', external:true},
+ {title:'Sai Studios Podcast', image:'sai-studios-podcast-logo.webp', href:'/podcast-studio/', className:'podcast-bubble'},
 ];
 ---
 <section class="service-universe" aria-label="Explore Sai Studios services">
@@ -22,9 +22,6 @@ const services = [
     <a
       class:list={['service-bubble', 'bubble-' + (index + 1), service.className]}
       href={service.href}
-      target={service.external ? '_blank' : undefined}
-      rel={service.external ? 'noopener noreferrer' : undefined}
-      aria-label={service.external ? service.title + ' on YouTube' : undefined}
       style={'--bubble-delay:-' + (index * 1.2) + 's;--bubble-duration:' + (6 + index % 3) + 's'}
     >
       <span class="bubble-surface">
@@ -32,7 +29,7 @@ const services = [
         <span class="bubble-label">
           {service.note && <small>{service.note}</small>}
           <strong>{service.title}</strong>
-          {!service.external && <Icon name="diagonal"/>}
+          <Icon name="diagonal"/>
         </span>
       </span>
     </a>
@@ -75,6 +72,10 @@ const services = [
   .podcast-bubble .bubble-label strong {
     max-width: 85%;
     font-size: clamp(16px, 3.5vw, 21px);
+  }
+
+  .podcast-bubble .bubble-label svg {
+    display: none;
   }
 
   .hub-youtube {
